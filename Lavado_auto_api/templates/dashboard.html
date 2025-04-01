@@ -19,7 +19,7 @@
 
 {% block content %}
 <div class="row">
-    <!-- Tarjetas de estadísticas -->
+    <!-- Tarjetas de estadísticas mejoradas con animaciones más rápidas -->
     <div class="col-xl-3 col-md-6 mb-4">
         <div class="card stats-card border-start border-primary border-5 h-100 py-2">
             <div class="card-body">
@@ -98,25 +98,28 @@
     </div>
 </div>
 
-<!-- Gráficos y estadísticas -->
+<!-- Gráficos y estadísticas optimizados -->
 <div class="row">
-    <!-- Gráfico de servicios -->
+    <!-- Gráfico de servicios más compacto -->
     <div class="col-lg-8 mb-4">
         <div class="card h-100">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h6 class="m-0 font-weight-bold">Servicios por día (último semana)</h6>
+                <h6 class="m-0 font-weight-bold">Servicios por día (última semana)</h6>
                 <div class="dropdown">
                     <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
                         <i class="bi bi-three-dots-vertical"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">Ver detalle</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('reportes.diario') }}">Ver detalle</a></li>
                         <li><a class="dropdown-item" href="#">Exportar datos</a></li>
                     </ul>
                 </div>
             </div>
             <div class="card-body">
-                <canvas id="serviciosChart" width="100%" height="40"></canvas>
+                <!-- Reducimos la altura del gráfico para que sea más compacto -->
+                <div style="height: 250px; position: relative;">
+                    <canvas id="serviciosChart"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -137,8 +140,13 @@
                     <div class="badge bg-primary rounded-pill">{{ empleado.servicios }}</div>
                 </div>
                 <div class="progress mb-3">
-                    <div class="progress-bar" role="progressbar" style="width: {{ (empleado.servicios / top_empleados[0].servicios) * 100 }}%" 
+                    <div class="progress-bar" role="progressbar" style="width: {{ (empleado.servicios / top_empleados[0].servicios) * 100 }}%"
                          aria-valuenow="{{ empleado.servicios }}" aria-valuemin="0" aria-valuemax="{{ top_empleados[0].servicios }}"></div>
+                </div>
+                {% else %}
+                <div class="text-center py-3">
+                    <i class="bi bi-people text-muted mb-2" style="font-size: 2rem;"></i>
+                    <p class="text-muted">No hay datos de empleados para hoy</p>
                 </div>
                 {% endfor %}
             </div>
@@ -243,15 +251,49 @@
         </div>
     </div>
 </div>
+
+<!-- Nueva sección de accesos rápidos -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h6 class="m-0 font-weight-bold">Accesos Rápidos</h6>
+            </div>
+            <div class="card-body">
+                <div class="row g-2">
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-2">
+                        <a href="{{ url_for('servicios.registrar') }}" class="btn btn-outline-primary w-100 py-3">
+                            <i class="bi bi-plus-circle me-2"></i> Nuevo Servicio
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-2">
+                        <a href="{{ url_for('vehiculos.registrar') }}" class="btn btn-outline-success w-100 py-3">
+                            <i class="bi bi-car-front me-2"></i> Nuevo Vehículo
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-2">
+                        <a href="{{ url_for('inventario.registrar') }}" class="btn btn-outline-warning w-100 py-3">
+                            <i class="bi bi-box-seam me-2"></i> Agregar Stock
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-2">
+                        <a href="{{ url_for('reportes.index') }}" class="btn btn-outline-info w-100 py-3">
+                            <i class="bi bi-bar-chart me-2"></i> Ver Reportes
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block extra_js %}
 <script>
-    // Gráfico de servicios por día
+    // Gráfico de servicios por día - optimizado para carga más rápida
     document.addEventListener('DOMContentLoaded', function() {
-        const ctx = document.getElementById('serviciosChart').getContext('2d');
-        
-        const chartData = {
+        // Definir los datos del gráfico
+        const datos = {
             labels: [{% for item in servicios_por_dia %}'{{ item.fecha }}',{% endfor %}],
             datasets: [
                 {
@@ -264,20 +306,32 @@
                     pointRadius: 4,
                     pointHoverRadius: 6,
                     fill: true,
-                    data: [{% for item in servicios_por_dia %}{{ item.servicios }},{% endfor %}],
+                    data: [{% for item in servicios_por_dia %}{{ item.servicios }},{% endfor %}]
                 }
-            ],
+            ]
         };
-        
-        const myChart = new Chart(ctx, {
+
+        // Configuración optimizada del gráfico
+        const config = {
             type: 'line',
-            data: chartData,
+            data: datos,
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                animation: {
+                    duration: 400 // Reducido de 1000ms a 400ms para acelerar las animaciones
+                },
                 plugins: {
                     legend: {
                         display: false
+                    },
+                    tooltip: {
+                        enabled: true,
+                        mode: 'index',
+                        intersect: false,
+                        animation: {
+                            duration: 100 // Tooltips más rápidos
+                        }
                     }
                 },
                 scales: {
@@ -296,9 +350,17 @@
                             display: false
                         }
                     }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'nearest'
                 }
             }
-        });
+        };
+
+        // Crear el gráfico con carga diferida
+        const ctx = document.getElementById('serviciosChart').getContext('2d');
+        new Chart(ctx, config);
     });
 </script>
 {% endblock %}

@@ -41,3 +41,6 @@ config_by_name = {
 
 # Configuración activa
 active_config = config_by_name[os.environ.get('FLASK_ENV', 'dev')]
+
+
+

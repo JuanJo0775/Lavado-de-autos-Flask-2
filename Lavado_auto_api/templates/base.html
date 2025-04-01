@@ -4,159 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Sistema de Lavado de Autos{% endblock %}</title>
+    <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Iconos Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <style>
-        :root {
-            --primary-color: #0d6efd;
-            --primary-dark: #0a58ca;
-            --accent-color: #fd7e14;
-            --light-bg: #f8f9fa;
-            --text-dark: #343a40;
-            --border-radius: 10px;
-        }
-
-        body {
-            background-color: var(--light-bg);
-            padding-top: 56px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .sidebar {
-            background-color: white;
-            height: calc(100vh - 56px);
-            position: fixed;
-            width: 250px;
-            padding: 1rem;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.05);
-            z-index: 100;
-            overflow-y: auto;
-        }
-
-        .main-content {
-            margin-left: 250px;
-            padding: 1.5rem;
-            flex: 1;
-        }
-
-        .navbar {
-            background-color: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .card {
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-            border: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-header {
-            background-color: white;
-            border-bottom: 1px solid rgba(0,0,0,0.125);
-            font-weight: 600;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-            border-color: var(--primary-dark);
-        }
-
-        .btn-accent {
-            background-color: var(--accent-color);
-            border-color: var(--accent-color);
-            color: white;
-        }
-
-        .sidebar-link {
-            display: flex;
-            align-items: center;
-            padding: 0.75rem 1rem;
-            color: var(--text-dark);
-            text-decoration: none;
-            border-radius: var(--border-radius);
-            margin-bottom: 0.5rem;
-            transition: all 0.2s;
-        }
-
-        .sidebar-link:hover, .sidebar-link.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .sidebar-link i {
-            margin-right: 0.75rem;
-            font-size: 1.25rem;
-        }
-
-        .table {
-            border-radius: var(--border-radius);
-            overflow: hidden;
-        }
-
-        .table th {
-            background-color: var(--primary-color);
-            color: white;
-            font-weight: 500;
-        }
-
-        .badge-success {
-            background-color: #28a745;
-            color: white;
-        }
-
-        .badge-warning {
-            background-color: #ffc107;
-            color: #212529;
-        }
-
-        .badge-danger {
-            background-color: #dc3545;
-            color: white;
-        }
-
-        .progress {
-            height: 12px;
-            border-radius: 6px;
-        }
-
-        .stats-card {
-            transition: all 0.3s;
-        }
-
-        .stats-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-        }
-
-        .stats-icon {
-            font-size: 2rem;
-            color: var(--primary-color);
-        }
-
-        /* Media queries para responsividad */
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                margin-bottom: 1rem;
-            }
-            .main-content {
-                margin-left: 0;
-            }
-            body {
-                padding-top: 56px;
-            }
-        }
-    </style>
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     {% block extra_css %}{% endblock %}
 </head>
 <body>
@@ -180,15 +33,15 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><div class="dropdown-item-text"><strong>Notificaciones</strong></div></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">
+                            <li><a class="dropdown-item" href="{{ url_for('insumos.stock_bajo') }}">
                                 <i class="bi bi-exclamation-triangle-fill text-warning me-2"></i>
                                 Stock bajo de Champú para Autos
                             </a></li>
-                            <li><a class="dropdown-item" href="#">
+                            <li><a class="dropdown-item" href="{{ url_for('servicios.detalle', id=1) }}">
                                 <i class="bi bi-check-circle-fill text-success me-2"></i>
                                 Servicio #123 completado
                             </a></li>
-                            <li><a class="dropdown-item" href="#">
+                            <li><a class="dropdown-item" href="{{ url_for('vehiculos.detalle', id=1) }}">
                                 <i class="bi bi-info-circle-fill text-primary me-2"></i>
                                 Nuevo vehículo registrado
                             </a></li>
@@ -210,11 +63,16 @@
         </div>
     </nav>
 
+    <!-- Botón para toggle del sidebar -->
+    <button class="sidebar-toggle btn btn-primary btn-sm" id="sidebarToggle">
+        <i class="bi bi-chevron-left" id="toggleIcon"></i>
+    </button>
+
     <!-- Contenedor principal con sidebar y contenido -->
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar / Menú lateral -->
-            <div class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+            <div class="sidebar">
                 <div class="position-sticky">
                     <div class="pt-2 pb-4">
                         <a href="{{ url_for('dashboard.index') }}" class="sidebar-link {% if request.path == url_for('dashboard.index') %}active{% endif %}">
@@ -256,7 +114,7 @@
             </div>
 
             <!-- Contenido principal -->
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+            <main class="main-content">
                 {% with messages = get_flashed_messages(with_categories=true) %}
                     {% if messages %}
                         {% for category, message in messages %}
@@ -280,9 +138,76 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Charts.js para gráficas -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- JavaScript de Bootstrap con atributo defer para mejor rendimiento -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
+
+    <!-- Charts.js con defer -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+
+    <!-- Script para manejar el toggle del sidebar -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const toggleIcon = document.getElementById('toggleIcon');
+            const body = document.body;
+
+            // Función para guardar el estado del sidebar en localStorage
+            function saveSidebarState(isCollapsed) {
+                localStorage.setItem('sidebarCollapsed', isCollapsed ? 'true' : 'false');
+            }
+
+            // Función para cargar el estado del sidebar desde localStorage
+            function loadSidebarState() {
+                const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+                if (isCollapsed) {
+                    body.classList.add('sidebar-collapsed');
+                    toggleIcon.classList.remove('bi-chevron-left');
+                    toggleIcon.classList.add('bi-chevron-right');
+                }
+            }
+
+            // Cargar estado al inicio
+            loadSidebarState();
+
+            // Manejador para el botón de toggle
+            sidebarToggle.addEventListener('click', function() {
+                if (window.innerWidth < 992) {
+                    // Comportamiento en móviles
+                    body.classList.toggle('sidebar-expanded');
+                } else {
+                    // Comportamiento en desktop
+                    body.classList.toggle('sidebar-collapsed');
+                }
+
+                // Cambiar ícono
+                toggleIcon.classList.toggle('bi-chevron-left');
+                toggleIcon.classList.toggle('bi-chevron-right');
+
+                // Guardar estado (solo en desktop)
+                if (window.innerWidth >= 992) {
+                    saveSidebarState(body.classList.contains('sidebar-collapsed'));
+                }
+            });
+
+            // Cerrar sidebar en móviles cuando se hace click fuera
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth < 992 &&
+                    body.classList.contains('sidebar-expanded') &&
+                    !event.target.closest('.sidebar') &&
+                    !event.target.closest('.sidebar-toggle')) {
+                    body.classList.remove('sidebar-expanded');
+                }
+            });
+
+            // Ajustar cuando cambia el tamaño de la ventana
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 992) {
+                    body.classList.remove('sidebar-expanded');
+                }
+            });
+        });
+    </script>
+
     <!-- Scripts adicionales -->
     {% block extra_js %}{% endblock %}
 </body>
