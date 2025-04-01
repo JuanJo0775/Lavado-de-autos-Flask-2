@@ -4,7 +4,7 @@ db = SQLAlchemy()
 
 # Importamos los modelos después de definir db para evitar problemas de dependencia circular
 from .Empleado import Empleado
-from .Vehiculo import  Vehiculo
+from .Vehiculo import Vehiculo
 from .TipoLavado import TipoLavado
 from .Insumo import Insumo, TipoInsumo
 from .Inventario import Inventario

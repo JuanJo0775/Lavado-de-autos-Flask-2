@@ -86,6 +86,7 @@ class ChecklistIngreso(db.Model):
         return f'<ChecklistIngreso {self.Id} para Servicio {self.Id_Servicio}>'
 
 
+
 class InsumoPorServicio(db.Model):
     """Modelo para registrar los insumos utilizados en cada servicio"""
     __tablename__ = 'insumos_por_servicio'

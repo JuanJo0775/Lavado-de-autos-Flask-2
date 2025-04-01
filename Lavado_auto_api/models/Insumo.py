@@ -1,19 +1,24 @@
 from models import db
 
-
 class TipoInsumo(db.Model):
     """Modelo para categorizar los insumos"""
     __tablename__ = 'tipo_insumo'
 
     Id = db.Column(db.Integer, primary_key=True)
     Nombre = db.Column(db.String(50), nullable=False)
-    Descripcion = db.Column(db.Integer)  # Nota: En la BD está como Integer pero debería ser String
+    Descripción = db.Column(db.String(200))  # Corregido: cambiado de Integer a String
     Estado = db.Column(db.Integer, default=1)  # 1=Activo, 0=Inactivo
 
     # Relaciones
     insumos = db.relationship('Insumo', back_populates='tipo_insumo')
 
     def __repr__(self):
+        return f'<TipoInsumo {self.Id}: {self.Nombre}>'
+
+    @property
+    def estado_texto(self):
+        """Retorna el estado en formato texto"""
+        return "Activo" if self.Estado == 1 else "Inactivo"
         return f'<TipoInsumo {self.Id}: {self.Nombre}>'
 
 

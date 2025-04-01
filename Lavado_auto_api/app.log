@@ -7388,3 +7388,404 @@ FROM inventario INNER JOIN insumos ON insumos.`Id` = inventario.`Id_insumo` ORDE
 2025-04-01 12:26:43,935 - werkzeug - INFO - 127.0.0.1 - - [01/Apr/2025 12:26:43] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
 2025-04-01 12:27:56,597 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Juan Jose Naranjo B\\PycharmProjects\\Lavado_auto_api\\config.py', reloading
 2025-04-01 12:27:57,036 - werkzeug - INFO -  * Restarting with stat
+2025-04-01 12:37:11,830 - sqlalchemy.engine.Engine - INFO - SELECT DATABASE()
+2025-04-01 12:37:11,830 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-04-01 12:37:11,831 - sqlalchemy.engine.Engine - INFO - SELECT @@sql_mode
+2025-04-01 12:37:11,831 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-04-01 12:37:11,832 - sqlalchemy.engine.Engine - INFO - SELECT @@lower_case_table_names
+2025-04-01 12:37:11,832 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-04-01 12:37:11,833 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-01 12:37:11,833 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-04-01 12:37:11,833 - sqlalchemy.engine.Engine - INFO - [generated in 0.00027s] {}
+2025-04-01 12:37:11,836 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-04-01 12:37:11,875 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-04-01 12:37:11,875 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-01 12:37:11,878 - werkzeug - INFO -  * Restarting with stat
+2025-04-01 12:37:12,828 - sqlalchemy.engine.Engine - INFO - SELECT DATABASE()
+2025-04-01 12:37:12,828 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-04-01 12:37:12,829 - sqlalchemy.engine.Engine - INFO - SELECT @@sql_mode
+2025-04-01 12:37:12,829 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-04-01 12:37:12,830 - sqlalchemy.engine.Engine - INFO - SELECT @@lower_case_table_names
+2025-04-01 12:37:12,830 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-04-01 12:37:12,831 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-01 12:37:12,831 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-04-01 12:37:12,831 - sqlalchemy.engine.Engine - INFO - [generated in 0.00029s] {}
+2025-04-01 12:37:12,834 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-04-01 12:37:12,851 - werkzeug - WARNING -  * Debugger is active!
+2025-04-01 12:37:12,872 - werkzeug - INFO -  * Debugger PIN: 876-823-217
+2025-04-01 12:37:24,464 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-01 12:37:24,470 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT servicios.`Id` AS `servicios_Id`, servicios.`Id_Empleado_Recibe` AS `servicios_Id_Empleado_Recibe`, servicios.`Id_Empleado_Lava` AS `servicios_Id_Empleado_Lava`, servicios.`Id_Tipovehículo` AS `servicios_Id_Tipovehículo`, servicios.`Id_TipoLavado` AS `servicios_Id_TipoLavado`, servicios.`Hora_Recibe` AS `servicios_Hora_Recibe`, servicios.`Hora_Entrega` AS `servicios_Hora_Entrega`, servicios.`Precio` AS `servicios_Precio`, servicios.`Placa` AS `servicios_Placa`, servicios.`Fecha` AS `servicios_Fecha`, servicios.`Estado` AS `servicios_Estado` 
+FROM servicios 
+WHERE servicios.`Fecha` = %(Fecha_1)s) AS anon_1
+2025-04-01 12:37:24,470 - sqlalchemy.engine.Engine - INFO - [generated in 0.00101s] {'Fecha_1': datetime.date(2025, 4, 1)}
+2025-04-01 12:37:24,489 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT servicios.`Id` AS `servicios_Id`, servicios.`Id_Empleado_Recibe` AS `servicios_Id_Empleado_Recibe`, servicios.`Id_Empleado_Lava` AS `servicios_Id_Empleado_Lava`, servicios.`Id_Tipovehículo` AS `servicios_Id_Tipovehículo`, servicios.`Id_TipoLavado` AS `servicios_Id_TipoLavado`, servicios.`Hora_Recibe` AS `servicios_Hora_Recibe`, servicios.`Hora_Entrega` AS `servicios_Hora_Entrega`, servicios.`Precio` AS `servicios_Precio`, servicios.`Placa` AS `servicios_Placa`, servicios.`Fecha` AS `servicios_Fecha`, servicios.`Estado` AS `servicios_Estado` 
+FROM servicios 
+WHERE servicios.`Estado` = %(Estado_1)s) AS anon_1
+2025-04-01 12:37:24,489 - sqlalchemy.engine.Engine - INFO - [generated in 0.00064s] {'Estado_1': 'En proceso'}
+2025-04-01 12:37:24,495 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT servicios.`Id` AS `servicios_Id`, servicios.`Id_Empleado_Recibe` AS `servicios_Id_Empleado_Recibe`, servicios.`Id_Empleado_Lava` AS `servicios_Id_Empleado_Lava`, servicios.`Id_Tipovehículo` AS `servicios_Id_Tipovehículo`, servicios.`Id_TipoLavado` AS `servicios_Id_TipoLavado`, servicios.`Hora_Recibe` AS `servicios_Hora_Recibe`, servicios.`Hora_Entrega` AS `servicios_Hora_Entrega`, servicios.`Precio` AS `servicios_Precio`, servicios.`Placa` AS `servicios_Placa`, servicios.`Fecha` AS `servicios_Fecha`, servicios.`Estado` AS `servicios_Estado` 
+FROM servicios 
+WHERE servicios.`Estado` = %(Estado_1)s AND servicios.`Fecha` = %(Fecha_1)s) AS anon_1
+2025-04-01 12:37:24,496 - sqlalchemy.engine.Engine - INFO - [generated in 0.00073s] {'Estado_1': 'Completado', 'Fecha_1': datetime.date(2025, 4, 1)}
+2025-04-01 12:37:24,499 - sqlalchemy.engine.Engine - INFO - SELECT servicios.`Id` AS `servicios_Id`, servicios.`Id_Empleado_Recibe` AS `servicios_Id_Empleado_Recibe`, servicios.`Id_Empleado_Lava` AS `servicios_Id_Empleado_Lava`, servicios.`Id_Tipovehículo` AS `servicios_Id_Tipovehículo`, servicios.`Id_TipoLavado` AS `servicios_Id_TipoLavado`, servicios.`Hora_Recibe` AS `servicios_Hora_Recibe`, servicios.`Hora_Entrega` AS `servicios_Hora_Entrega`, servicios.`Precio` AS `servicios_Precio`, servicios.`Placa` AS `servicios_Placa`, servicios.`Fecha` AS `servicios_Fecha`, servicios.`Estado` AS `servicios_Estado` 
+FROM servicios 
+WHERE servicios.`Fecha` = %(Fecha_1)s AND servicios.`Estado` = %(Estado_1)s
+2025-04-01 12:37:24,500 - sqlalchemy.engine.Engine - INFO - [generated in 0.00073s] {'Fecha_1': datetime.date(2025, 4, 1), 'Estado_1': 'Completado'}
+2025-04-01 12:37:24,508 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT `vehículos`.`Id` AS `vehículos_Id`, `vehículos`.`Placa` AS `vehículos_Placa`, `vehículos`.`Marca` AS `vehículos_Marca`, `vehículos`.`Modelo` AS `vehículos_Modelo`, `vehículos`.`Color` AS `vehículos_Color`, `vehículos`.`Tipo_Vehículo` AS `vehículos_Tipo_Vehículo`, `vehículos`.`Descripcion` AS `vehículos_Descripcion`, `vehículos`.`Estado` AS `vehículos_Estado` 
+FROM `vehículos`) AS anon_1
+2025-04-01 12:37:24,508 - sqlalchemy.engine.Engine - INFO - [generated in 0.00100s] {}
+2025-04-01 12:37:24,516 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT `vehículos`.`Id` AS `vehículos_Id`, `vehículos`.`Placa` AS `vehículos_Placa`, `vehículos`.`Marca` AS `vehículos_Marca`, `vehículos`.`Modelo` AS `vehículos_Modelo`, `vehículos`.`Color` AS `vehículos_Color`, `vehículos`.`Tipo_Vehículo` AS `vehículos_Tipo_Vehículo`, `vehículos`.`Descripcion` AS `vehículos_Descripcion`, `vehículos`.`Estado` AS `vehículos_Estado` 
+FROM `vehículos` 
+WHERE `vehículos`.`Estado` = %(Estado_1)s) AS anon_1
+2025-04-01 12:37:24,517 - sqlalchemy.engine.Engine - INFO - [generated in 0.00116s] {'Estado_1': 'Activo'}
+2025-04-01 12:37:24,520 - sqlalchemy.engine.Engine - INFO - SELECT insumos.`Id` AS `insumos_Id`, insumos.`Nombre` AS `insumos_Nombre`, insumos.`Precio_Unitario` AS `insumos_Precio_Unitario`, insumos.`Id_TipoInsumo` AS `insumos_Id_TipoInsumo`, insumos.`Estado` AS `insumos_Estado` 
+FROM insumos
+2025-04-01 12:37:24,521 - sqlalchemy.engine.Engine - INFO - [generated in 0.00067s] {}
+2025-04-01 12:37:24,533 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,533 - sqlalchemy.engine.Engine - INFO - [generated in 0.00063s] {'param_1': 21}
+2025-04-01 12:37:24,539 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,539 - sqlalchemy.engine.Engine - INFO - [cached since 0.007052s ago] {'param_1': 22}
+2025-04-01 12:37:24,542 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,543 - sqlalchemy.engine.Engine - INFO - [cached since 0.01024s ago] {'param_1': 23}
+2025-04-01 12:37:24,545 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,546 - sqlalchemy.engine.Engine - INFO - [cached since 0.01306s ago] {'param_1': 24}
+2025-04-01 12:37:24,547 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,547 - sqlalchemy.engine.Engine - INFO - [cached since 0.01524s ago] {'param_1': 25}
+2025-04-01 12:37:24,549 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,549 - sqlalchemy.engine.Engine - INFO - [cached since 0.01689s ago] {'param_1': 26}
+2025-04-01 12:37:24,551 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,551 - sqlalchemy.engine.Engine - INFO - [cached since 0.01895s ago] {'param_1': 27}
+2025-04-01 12:37:24,553 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,553 - sqlalchemy.engine.Engine - INFO - [cached since 0.02125s ago] {'param_1': 28}
+2025-04-01 12:37:24,555 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,555 - sqlalchemy.engine.Engine - INFO - [cached since 0.02316s ago] {'param_1': 29}
+2025-04-01 12:37:24,559 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,559 - sqlalchemy.engine.Engine - INFO - [cached since 0.02576s ago] {'param_1': 30}
+2025-04-01 12:37:24,560 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,560 - sqlalchemy.engine.Engine - INFO - [cached since 0.02793s ago] {'param_1': 31}
+2025-04-01 12:37:24,562 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,562 - sqlalchemy.engine.Engine - INFO - [cached since 0.02956s ago] {'param_1': 32}
+2025-04-01 12:37:24,564 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,564 - sqlalchemy.engine.Engine - INFO - [cached since 0.03217s ago] {'param_1': 33}
+2025-04-01 12:37:24,566 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,567 - sqlalchemy.engine.Engine - INFO - [cached since 0.03462s ago] {'param_1': 34}
+2025-04-01 12:37:24,569 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,569 - sqlalchemy.engine.Engine - INFO - [cached since 0.03645s ago] {'param_1': 35}
+2025-04-01 12:37:24,570 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,570 - sqlalchemy.engine.Engine - INFO - [cached since 0.03821s ago] {'param_1': 36}
+2025-04-01 12:37:24,573 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,573 - sqlalchemy.engine.Engine - INFO - [cached since 0.04034s ago] {'param_1': 37}
+2025-04-01 12:37:24,575 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,575 - sqlalchemy.engine.Engine - INFO - [cached since 0.04222s ago] {'param_1': 38}
+2025-04-01 12:37:24,577 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,577 - sqlalchemy.engine.Engine - INFO - [cached since 0.04408s ago] {'param_1': 39}
+2025-04-01 12:37:24,579 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,579 - sqlalchemy.engine.Engine - INFO - [cached since 0.04569s ago] {'param_1': 40}
+2025-04-01 12:37:24,580 - sqlalchemy.engine.Engine - INFO - SELECT insumos.`Id` AS `insumos_Id`, insumos.`Nombre` AS `insumos_Nombre`, insumos.`Precio_Unitario` AS `insumos_Precio_Unitario`, insumos.`Id_TipoInsumo` AS `insumos_Id_TipoInsumo`, insumos.`Estado` AS `insumos_Estado` 
+FROM insumos
+2025-04-01 12:37:24,581 - sqlalchemy.engine.Engine - INFO - [cached since 0.05978s ago] {}
+2025-04-01 12:37:24,583 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,583 - sqlalchemy.engine.Engine - INFO - [cached since 0.04985s ago] {'param_1': 21}
+2025-04-01 12:37:24,584 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,585 - sqlalchemy.engine.Engine - INFO - [cached since 0.05151s ago] {'param_1': 22}
+2025-04-01 12:37:24,586 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,586 - sqlalchemy.engine.Engine - INFO - [cached since 0.05303s ago] {'param_1': 23}
+2025-04-01 12:37:24,587 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,587 - sqlalchemy.engine.Engine - INFO - [cached since 0.05451s ago] {'param_1': 24}
+2025-04-01 12:37:24,588 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,589 - sqlalchemy.engine.Engine - INFO - [cached since 0.05604s ago] {'param_1': 25}
+2025-04-01 12:37:24,591 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,591 - sqlalchemy.engine.Engine - INFO - [cached since 0.05832s ago] {'param_1': 26}
+2025-04-01 12:37:24,592 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,593 - sqlalchemy.engine.Engine - INFO - [cached since 0.06015s ago] {'param_1': 27}
+2025-04-01 12:37:24,594 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,594 - sqlalchemy.engine.Engine - INFO - [cached since 0.06187s ago] {'param_1': 28}
+2025-04-01 12:37:24,596 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,596 - sqlalchemy.engine.Engine - INFO - [cached since 0.06343s ago] {'param_1': 29}
+2025-04-01 12:37:24,597 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,598 - sqlalchemy.engine.Engine - INFO - [cached since 0.06499s ago] {'param_1': 30}
+2025-04-01 12:37:24,599 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,600 - sqlalchemy.engine.Engine - INFO - [cached since 0.06716s ago] {'param_1': 31}
+2025-04-01 12:37:24,601 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,602 - sqlalchemy.engine.Engine - INFO - [cached since 0.06897s ago] {'param_1': 32}
+2025-04-01 12:37:24,603 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,604 - sqlalchemy.engine.Engine - INFO - [cached since 0.07094s ago] {'param_1': 33}
+2025-04-01 12:37:24,606 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,606 - sqlalchemy.engine.Engine - INFO - [cached since 0.07326s ago] {'param_1': 34}
+2025-04-01 12:37:24,608 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,608 - sqlalchemy.engine.Engine - INFO - [cached since 0.07553s ago] {'param_1': 35}
+2025-04-01 12:37:24,610 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,610 - sqlalchemy.engine.Engine - INFO - [cached since 0.07777s ago] {'param_1': 36}
+2025-04-01 12:37:24,613 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,613 - sqlalchemy.engine.Engine - INFO - [cached since 0.08065s ago] {'param_1': 37}
+2025-04-01 12:37:24,615 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,615 - sqlalchemy.engine.Engine - INFO - [cached since 0.08225s ago] {'param_1': 38}
+2025-04-01 12:37:24,617 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,617 - sqlalchemy.engine.Engine - INFO - [cached since 0.08456s ago] {'param_1': 39}
+2025-04-01 12:37:24,619 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,619 - sqlalchemy.engine.Engine - INFO - [cached since 0.08693s ago] {'param_1': 40}
+2025-04-01 12:37:24,622 - sqlalchemy.engine.Engine - INFO - SELECT servicios.`Id` AS `servicios_Id`, servicios.`Id_Empleado_Recibe` AS `servicios_Id_Empleado_Recibe`, servicios.`Id_Empleado_Lava` AS `servicios_Id_Empleado_Lava`, servicios.`Id_Tipovehículo` AS `servicios_Id_Tipovehículo`, servicios.`Id_TipoLavado` AS `servicios_Id_TipoLavado`, servicios.`Hora_Recibe` AS `servicios_Hora_Recibe`, servicios.`Hora_Entrega` AS `servicios_Hora_Entrega`, servicios.`Precio` AS `servicios_Precio`, servicios.`Placa` AS `servicios_Placa`, servicios.`Fecha` AS `servicios_Fecha`, servicios.`Estado` AS `servicios_Estado` 
+FROM servicios 
+WHERE servicios.`Estado` = %(Estado_1)s ORDER BY servicios.`Fecha`, servicios.`Hora_Recibe` 
+ LIMIT %(param_1)s
+2025-04-01 12:37:24,623 - sqlalchemy.engine.Engine - INFO - [generated in 0.00049s] {'Estado_1': 'En proceso', 'param_1': 5}
+2025-04-01 12:37:24,625 - sqlalchemy.engine.Engine - INFO - SELECT servicios.`Id` AS `servicios_Id`, servicios.`Id_Empleado_Recibe` AS `servicios_Id_Empleado_Recibe`, servicios.`Id_Empleado_Lava` AS `servicios_Id_Empleado_Lava`, servicios.`Id_Tipovehículo` AS `servicios_Id_Tipovehículo`, servicios.`Id_TipoLavado` AS `servicios_Id_TipoLavado`, servicios.`Hora_Recibe` AS `servicios_Hora_Recibe`, servicios.`Hora_Entrega` AS `servicios_Hora_Entrega`, servicios.`Precio` AS `servicios_Precio`, servicios.`Placa` AS `servicios_Placa`, servicios.`Fecha` AS `servicios_Fecha`, servicios.`Estado` AS `servicios_Estado` 
+FROM servicios ORDER BY servicios.`Id` DESC 
+ LIMIT %(param_1)s
+2025-04-01 12:37:24,626 - sqlalchemy.engine.Engine - INFO - [generated in 0.00061s] {'param_1': 5}
+2025-04-01 12:37:24,628 - sqlalchemy.engine.Engine - INFO - SELECT insumos.`Id` AS `insumos_Id`, insumos.`Nombre` AS `insumos_Nombre`, insumos.`Precio_Unitario` AS `insumos_Precio_Unitario`, insumos.`Id_TipoInsumo` AS `insumos_Id_TipoInsumo`, insumos.`Estado` AS `insumos_Estado` 
+FROM insumos
+2025-04-01 12:37:24,628 - sqlalchemy.engine.Engine - INFO - [cached since 0.1079s ago] {}
+2025-04-01 12:37:24,630 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,630 - sqlalchemy.engine.Engine - INFO - [cached since 0.09744s ago] {'param_1': 21}
+2025-04-01 12:37:24,631 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,632 - sqlalchemy.engine.Engine - INFO - [cached since 0.09919s ago] {'param_1': 22}
+2025-04-01 12:37:24,633 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,633 - sqlalchemy.engine.Engine - INFO - [cached since 0.1009s ago] {'param_1': 23}
+2025-04-01 12:37:24,635 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,635 - sqlalchemy.engine.Engine - INFO - [cached since 0.1027s ago] {'param_1': 24}
+2025-04-01 12:37:24,637 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,637 - sqlalchemy.engine.Engine - INFO - [cached since 0.1044s ago] {'param_1': 25}
+2025-04-01 12:37:24,638 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,639 - sqlalchemy.engine.Engine - INFO - [cached since 0.1061s ago] {'param_1': 26}
+2025-04-01 12:37:24,640 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,640 - sqlalchemy.engine.Engine - INFO - [cached since 0.1079s ago] {'param_1': 27}
+2025-04-01 12:37:24,642 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,642 - sqlalchemy.engine.Engine - INFO - [cached since 0.1092s ago] {'param_1': 28}
+2025-04-01 12:37:24,643 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,644 - sqlalchemy.engine.Engine - INFO - [cached since 0.1107s ago] {'param_1': 29}
+2025-04-01 12:37:24,645 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,645 - sqlalchemy.engine.Engine - INFO - [cached since 0.1122s ago] {'param_1': 30}
+2025-04-01 12:37:24,646 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,647 - sqlalchemy.engine.Engine - INFO - [cached since 0.1136s ago] {'param_1': 31}
+2025-04-01 12:37:24,648 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,648 - sqlalchemy.engine.Engine - INFO - [cached since 0.115s ago] {'param_1': 32}
+2025-04-01 12:37:24,649 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,649 - sqlalchemy.engine.Engine - INFO - [cached since 0.1164s ago] {'param_1': 33}
+2025-04-01 12:37:24,651 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,651 - sqlalchemy.engine.Engine - INFO - [cached since 0.1179s ago] {'param_1': 34}
+2025-04-01 12:37:24,652 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,652 - sqlalchemy.engine.Engine - INFO - [cached since 0.1193s ago] {'param_1': 35}
+2025-04-01 12:37:24,654 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,654 - sqlalchemy.engine.Engine - INFO - [cached since 0.1208s ago] {'param_1': 36}
+2025-04-01 12:37:24,655 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,655 - sqlalchemy.engine.Engine - INFO - [cached since 0.1222s ago] {'param_1': 37}
+2025-04-01 12:37:24,657 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,657 - sqlalchemy.engine.Engine - INFO - [cached since 0.1238s ago] {'param_1': 38}
+2025-04-01 12:37:24,658 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,658 - sqlalchemy.engine.Engine - INFO - [cached since 0.1253s ago] {'param_1': 39}
+2025-04-01 12:37:24,659 - sqlalchemy.engine.Engine - INFO - SELECT inventario.`Id` AS `inventario_Id`, inventario.`Id_insumo` AS `inventario_Id_insumo`, inventario.`Stock` AS `inventario_Stock`, inventario.`Estado` AS `inventario_Estado` 
+FROM inventario 
+WHERE %(param_1)s = inventario.`Id_insumo`
+2025-04-01 12:37:24,659 - sqlalchemy.engine.Engine - INFO - [cached since 0.1267s ago] {'param_1': 40}
+2025-04-01 12:37:24,661 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT servicios.`Id` AS `servicios_Id`, servicios.`Id_Empleado_Recibe` AS `servicios_Id_Empleado_Recibe`, servicios.`Id_Empleado_Lava` AS `servicios_Id_Empleado_Lava`, servicios.`Id_Tipovehículo` AS `servicios_Id_Tipovehículo`, servicios.`Id_TipoLavado` AS `servicios_Id_TipoLavado`, servicios.`Hora_Recibe` AS `servicios_Hora_Recibe`, servicios.`Hora_Entrega` AS `servicios_Hora_Entrega`, servicios.`Precio` AS `servicios_Precio`, servicios.`Placa` AS `servicios_Placa`, servicios.`Fecha` AS `servicios_Fecha`, servicios.`Estado` AS `servicios_Estado` 
+FROM servicios 
+WHERE servicios.`Fecha` = %(Fecha_1)s) AS anon_1
+2025-04-01 12:37:24,661 - sqlalchemy.engine.Engine - INFO - [cached since 0.1918s ago] {'Fecha_1': datetime.date(2025, 3, 26)}
+2025-04-01 12:37:24,663 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT servicios.`Id` AS `servicios_Id`, servicios.`Id_Empleado_Recibe` AS `servicios_Id_Empleado_Recibe`, servicios.`Id_Empleado_Lava` AS `servicios_Id_Empleado_Lava`, servicios.`Id_Tipovehículo` AS `servicios_Id_Tipovehículo`, servicios.`Id_TipoLavado` AS `servicios_Id_TipoLavado`, servicios.`Hora_Recibe` AS `servicios_Hora_Recibe`, servicios.`Hora_Entrega` AS `servicios_Hora_Entrega`, servicios.`Precio` AS `servicios_Precio`, servicios.`Placa` AS `servicios_Placa`, servicios.`Fecha` AS `servicios_Fecha`, servicios.`Estado` AS `servicios_Estado` 
+FROM servicios 
+WHERE servicios.`Fecha` = %(Fecha_1)s) AS anon_1
+2025-04-01 12:37:24,663 - sqlalchemy.engine.Engine - INFO - [cached since 0.1938s ago] {'Fecha_1': datetime.date(2025, 3, 27)}
+2025-04-01 12:37:24,665 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT servicios.`Id` AS `servicios_Id`, servicios.`Id_Empleado_Recibe` AS `servicios_Id_Empleado_Recibe`, servicios.`Id_Empleado_Lava` AS `servicios_Id_Empleado_Lava`, servicios.`Id_Tipovehículo` AS `servicios_Id_Tipovehículo`, servicios.`Id_TipoLavado` AS `servicios_Id_TipoLavado`, servicios.`Hora_Recibe` AS `servicios_Hora_Recibe`, servicios.`Hora_Entrega` AS `servicios_Hora_Entrega`, servicios.`Precio` AS `servicios_Precio`, servicios.`Placa` AS `servicios_Placa`, servicios.`Fecha` AS `servicios_Fecha`, servicios.`Estado` AS `servicios_Estado` 
+FROM servicios 
+WHERE servicios.`Fecha` = %(Fecha_1)s) AS anon_1
+2025-04-01 12:37:24,665 - sqlalchemy.engine.Engine - INFO - [cached since 0.1956s ago] {'Fecha_1': datetime.date(2025, 3, 28)}
+2025-04-01 12:37:24,666 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT servicios.`Id` AS `servicios_Id`, servicios.`Id_Empleado_Recibe` AS `servicios_Id_Empleado_Recibe`, servicios.`Id_Empleado_Lava` AS `servicios_Id_Empleado_Lava`, servicios.`Id_Tipovehículo` AS `servicios_Id_Tipovehículo`, servicios.`Id_TipoLavado` AS `servicios_Id_TipoLavado`, servicios.`Hora_Recibe` AS `servicios_Hora_Recibe`, servicios.`Hora_Entrega` AS `servicios_Hora_Entrega`, servicios.`Precio` AS `servicios_Precio`, servicios.`Placa` AS `servicios_Placa`, servicios.`Fecha` AS `servicios_Fecha`, servicios.`Estado` AS `servicios_Estado` 
+FROM servicios 
+WHERE servicios.`Fecha` = %(Fecha_1)s) AS anon_1
+2025-04-01 12:37:24,666 - sqlalchemy.engine.Engine - INFO - [cached since 0.1973s ago] {'Fecha_1': datetime.date(2025, 3, 29)}
+2025-04-01 12:37:24,668 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT servicios.`Id` AS `servicios_Id`, servicios.`Id_Empleado_Recibe` AS `servicios_Id_Empleado_Recibe`, servicios.`Id_Empleado_Lava` AS `servicios_Id_Empleado_Lava`, servicios.`Id_Tipovehículo` AS `servicios_Id_Tipovehículo`, servicios.`Id_TipoLavado` AS `servicios_Id_TipoLavado`, servicios.`Hora_Recibe` AS `servicios_Hora_Recibe`, servicios.`Hora_Entrega` AS `servicios_Hora_Entrega`, servicios.`Precio` AS `servicios_Precio`, servicios.`Placa` AS `servicios_Placa`, servicios.`Fecha` AS `servicios_Fecha`, servicios.`Estado` AS `servicios_Estado` 
+FROM servicios 
+WHERE servicios.`Fecha` = %(Fecha_1)s) AS anon_1
+2025-04-01 12:37:24,668 - sqlalchemy.engine.Engine - INFO - [cached since 0.1988s ago] {'Fecha_1': datetime.date(2025, 3, 30)}
+2025-04-01 12:37:24,669 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT servicios.`Id` AS `servicios_Id`, servicios.`Id_Empleado_Recibe` AS `servicios_Id_Empleado_Recibe`, servicios.`Id_Empleado_Lava` AS `servicios_Id_Empleado_Lava`, servicios.`Id_Tipovehículo` AS `servicios_Id_Tipovehículo`, servicios.`Id_TipoLavado` AS `servicios_Id_TipoLavado`, servicios.`Hora_Recibe` AS `servicios_Hora_Recibe`, servicios.`Hora_Entrega` AS `servicios_Hora_Entrega`, servicios.`Precio` AS `servicios_Precio`, servicios.`Placa` AS `servicios_Placa`, servicios.`Fecha` AS `servicios_Fecha`, servicios.`Estado` AS `servicios_Estado` 
+FROM servicios 
+WHERE servicios.`Fecha` = %(Fecha_1)s) AS anon_1
+2025-04-01 12:37:24,670 - sqlalchemy.engine.Engine - INFO - [cached since 0.2004s ago] {'Fecha_1': datetime.date(2025, 3, 31)}
+2025-04-01 12:37:24,671 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT servicios.`Id` AS `servicios_Id`, servicios.`Id_Empleado_Recibe` AS `servicios_Id_Empleado_Recibe`, servicios.`Id_Empleado_Lava` AS `servicios_Id_Empleado_Lava`, servicios.`Id_Tipovehículo` AS `servicios_Id_Tipovehículo`, servicios.`Id_TipoLavado` AS `servicios_Id_TipoLavado`, servicios.`Hora_Recibe` AS `servicios_Hora_Recibe`, servicios.`Hora_Entrega` AS `servicios_Hora_Entrega`, servicios.`Precio` AS `servicios_Precio`, servicios.`Placa` AS `servicios_Placa`, servicios.`Fecha` AS `servicios_Fecha`, servicios.`Estado` AS `servicios_Estado` 
+FROM servicios 
+WHERE servicios.`Fecha` = %(Fecha_1)s) AS anon_1
+2025-04-01 12:37:24,671 - sqlalchemy.engine.Engine - INFO - [cached since 0.2019s ago] {'Fecha_1': datetime.date(2025, 4, 1)}
+2025-04-01 12:37:24,673 - sqlalchemy.engine.Engine - INFO - SELECT servicios.`Id` AS `servicios_Id`, servicios.`Id_Empleado_Recibe` AS `servicios_Id_Empleado_Recibe`, servicios.`Id_Empleado_Lava` AS `servicios_Id_Empleado_Lava`, servicios.`Id_Tipovehículo` AS `servicios_Id_Tipovehículo`, servicios.`Id_TipoLavado` AS `servicios_Id_TipoLavado`, servicios.`Hora_Recibe` AS `servicios_Hora_Recibe`, servicios.`Hora_Entrega` AS `servicios_Hora_Entrega`, servicios.`Precio` AS `servicios_Precio`, servicios.`Placa` AS `servicios_Placa`, servicios.`Fecha` AS `servicios_Fecha`, servicios.`Estado` AS `servicios_Estado` 
+FROM servicios 
+WHERE servicios.`Fecha` = %(Fecha_1)s
+2025-04-01 12:37:24,673 - sqlalchemy.engine.Engine - INFO - [generated in 0.00042s] {'Fecha_1': datetime.date(2025, 4, 1)}
+2025-04-01 12:37:24,675 - sqlalchemy.engine.Engine - INFO - SELECT empleado.`Id` AS `empleado_Id`, empleado.`Nombre` AS `empleado_Nombre`, empleado.`Apellidos` AS `empleado_Apellidos`, empleado.`Fecha_Nacimiento` AS `empleado_Fecha_Nacimiento`, empleado.`Estado` AS `empleado_Estado` 
+FROM empleado 
+WHERE empleado.`Id` = %(pk_1)s
+2025-04-01 12:37:24,675 - sqlalchemy.engine.Engine - INFO - [generated in 0.00047s] {'pk_1': 1001}
+2025-04-01 12:37:24,706 - sqlalchemy.engine.Engine - INFO - SELECT `vehículos`.`Id` AS `vehículos_Id`, `vehículos`.`Placa` AS `vehículos_Placa`, `vehículos`.`Marca` AS `vehículos_Marca`, `vehículos`.`Modelo` AS `vehículos_Modelo`, `vehículos`.`Color` AS `vehículos_Color`, `vehículos`.`Tipo_Vehículo` AS `vehículos_Tipo_Vehículo`, `vehículos`.`Descripcion` AS `vehículos_Descripcion`, `vehículos`.`Estado` AS `vehículos_Estado` 
+FROM `vehículos` 
+WHERE `vehículos`.`Id` = %(pk_1)s
+2025-04-01 12:37:24,706 - sqlalchemy.engine.Engine - INFO - [generated in 0.00068s] {'pk_1': 12}
+2025-04-01 12:37:24,708 - sqlalchemy.engine.Engine - INFO - SELECT tipo_lavado.`Id` AS `tipo_lavado_Id`, tipo_lavado.`Nombre` AS `tipo_lavado_Nombre`, tipo_lavado.`Precio` AS `tipo_lavado_Precio`, tipo_lavado.`Id_Insumo` AS `tipo_lavado_Id_Insumo`, tipo_lavado.`Estado` AS `tipo_lavado_Estado` 
+FROM tipo_lavado 
+WHERE tipo_lavado.`Id` = %(pk_1)s
+2025-04-01 12:37:24,709 - sqlalchemy.engine.Engine - INFO - [generated in 0.00044s] {'pk_1': 1}
+2025-04-01 12:37:24,714 - sqlalchemy.engine.Engine - INFO - SELECT empleado.`Id` AS `empleado_Id`, empleado.`Nombre` AS `empleado_Nombre`, empleado.`Apellidos` AS `empleado_Apellidos`, empleado.`Fecha_Nacimiento` AS `empleado_Fecha_Nacimiento`, empleado.`Estado` AS `empleado_Estado` 
+FROM empleado 
+WHERE empleado.`Id` = %(pk_1)s
+2025-04-01 12:37:24,715 - sqlalchemy.engine.Engine - INFO - [cached since 0.04016s ago] {'pk_1': 1008}
+2025-04-01 12:37:24,716 - sqlalchemy.engine.Engine - INFO - SELECT tipo_lavado.`Id` AS `tipo_lavado_Id`, tipo_lavado.`Nombre` AS `tipo_lavado_Nombre`, tipo_lavado.`Precio` AS `tipo_lavado_Precio`, tipo_lavado.`Id_Insumo` AS `tipo_lavado_Id_Insumo`, tipo_lavado.`Estado` AS `tipo_lavado_Estado` 
+FROM tipo_lavado 
+WHERE tipo_lavado.`Id` = %(pk_1)s
+2025-04-01 12:37:24,717 - sqlalchemy.engine.Engine - INFO - [cached since 0.008646s ago] {'pk_1': 5}
+2025-04-01 12:37:24,719 - sqlalchemy.engine.Engine - INFO - SELECT empleado.`Id` AS `empleado_Id`, empleado.`Nombre` AS `empleado_Nombre`, empleado.`Apellidos` AS `empleado_Apellidos`, empleado.`Fecha_Nacimiento` AS `empleado_Fecha_Nacimiento`, empleado.`Estado` AS `empleado_Estado` 
+FROM empleado 
+WHERE empleado.`Id` = %(pk_1)s
+2025-04-01 12:37:24,719 - sqlalchemy.engine.Engine - INFO - [cached since 0.04424s ago] {'pk_1': 1004}
+2025-04-01 12:37:24,721 - sqlalchemy.engine.Engine - INFO - SELECT `vehículos`.`Id` AS `vehículos_Id`, `vehículos`.`Placa` AS `vehículos_Placa`, `vehículos`.`Marca` AS `vehículos_Marca`, `vehículos`.`Modelo` AS `vehículos_Modelo`, `vehículos`.`Color` AS `vehículos_Color`, `vehículos`.`Tipo_Vehículo` AS `vehículos_Tipo_Vehículo`, `vehículos`.`Descripcion` AS `vehículos_Descripcion`, `vehículos`.`Estado` AS `vehículos_Estado` 
+FROM `vehículos` 
+WHERE `vehículos`.`Id` = %(pk_1)s
+2025-04-01 12:37:24,721 - sqlalchemy.engine.Engine - INFO - [cached since 0.01561s ago] {'pk_1': 1}
+2025-04-01 12:37:24,724 - sqlalchemy.engine.Engine - INFO - SELECT tipo_lavado.`Id` AS `tipo_lavado_Id`, tipo_lavado.`Nombre` AS `tipo_lavado_Nombre`, tipo_lavado.`Precio` AS `tipo_lavado_Precio`, tipo_lavado.`Id_Insumo` AS `tipo_lavado_Id_Insumo`, tipo_lavado.`Estado` AS `tipo_lavado_Estado` 
+FROM tipo_lavado 
+WHERE tipo_lavado.`Id` = %(pk_1)s
+2025-04-01 12:37:24,724 - sqlalchemy.engine.Engine - INFO - [cached since 0.01523s ago] {'pk_1': 6}
+2025-04-01 12:37:24,726 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-04-01 12:37:24,727 - werkzeug - INFO - 127.0.0.1 - - [01/Apr/2025 12:37:24] "GET / HTTP/1.1" 200 -
+2025-04-01 12:37:24,814 - werkzeug - INFO - 127.0.0.1 - - [01/Apr/2025 12:37:24] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-04-01 12:37:25,110 - werkzeug - INFO - 127.0.0.1 - - [01/Apr/2025 12:37:25] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2025-04-01 12:37:29,004 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-01 12:37:29,006 - sqlalchemy.engine.Engine - INFO - SELECT insumos.`Id` AS `insumos_Id`, insumos.`Nombre` AS `insumos_Nombre`, insumos.`Precio_Unitario` AS `insumos_Precio_Unitario`, insumos.`Id_TipoInsumo` AS `insumos_Id_TipoInsumo`, insumos.`Estado` AS `insumos_Estado` 
+FROM insumos 
+WHERE insumos.`Estado` = %(Estado_1)s
+2025-04-01 12:37:29,008 - sqlalchemy.engine.Engine - INFO - [generated in 0.00123s] {'Estado_1': 'Activo'}
+2025-04-01 12:37:29,010 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-04-01 12:37:29,022 - werkzeug - INFO - 127.0.0.1 - - [01/Apr/2025 12:37:29] "[35m[1mGET /inventario/registrar HTTP/1.1[0m" 500 -
+2025-04-01 12:37:29,078 - werkzeug - INFO - 127.0.0.1 - - [01/Apr/2025 12:37:29] "[36mGET /inventario/registrar?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-01 12:37:29,079 - werkzeug - INFO - 127.0.0.1 - - [01/Apr/2025 12:37:29] "[36mGET /inventario/registrar?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-01 12:37:29,188 - werkzeug - INFO - 127.0.0.1 - - [01/Apr/2025 12:37:29] "GET /inventario/registrar?__debugger__=yes&cmd=resource&f=console.png&s=EZf9q2rsqosd8MVJtlGo HTTP/1.1" 200 -
+2025-04-01 12:37:32,349 - werkzeug - INFO - 127.0.0.1 - - [01/Apr/2025 12:37:32] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
