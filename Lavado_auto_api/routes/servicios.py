@@ -111,8 +111,21 @@ def registrar():
         return redirect(url_for('servicios.detalle', id=servicio.Id))
 
     # Mostrar formulario (GET)
-    empleados = Empleado.query.filter_by(Estado='Activo').all()
-    tipos_lavado = TipoLavado.query.filter_by(Estado='activo').all()
+    # Obtener todos los empleados sin filtrar por estado para evitar problemas
+    empleados = Empleado.query.all()
+
+    # Verificamos si la lista tiene elementos y la mostramos en el log
+    print(f"Número de empleados recuperados: {len(empleados)}")
+    for emp in empleados[:3]:  # Mostrar los primeros 3 como ejemplo
+        print(f"Empleado: ID={emp.Id}, Nombre={emp.nombre_completo}, Estado={emp.Estado}")
+
+    # También obtenemos todos los tipos de lavado sin filtrar por estado
+    tipos_lavado = TipoLavado.query.all()
+
+    # Verificamos si hay tipos de lavado disponibles
+    print(f"Número de tipos de lavado recuperados: {len(tipos_lavado)}")
+    for tipo in tipos_lavado[:3]:  # Mostrar los primeros 3 como ejemplo
+        print(f"Tipo de lavado: ID={tipo.Id}, Nombre={tipo.Nombre}, Estado={tipo.Estado}")
 
     # Placa por defecto si viene de otro formulario
     placa_inicial = request.args.get('placa', '')
@@ -121,7 +134,6 @@ def registrar():
                            empleados=empleados,
                            tipos_lavado=tipos_lavado,
                            placa_inicial=placa_inicial)
-
 
 @servicio_bp.route('/<int:id>/finalizar', methods=['POST'])
 def finalizar(id):

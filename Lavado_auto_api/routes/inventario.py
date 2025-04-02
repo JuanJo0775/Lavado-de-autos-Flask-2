@@ -48,14 +48,14 @@ def registrar():
         if not insumo:
             flash('❌ El insumo seleccionado no existe', 'danger')
             return render_template('inventario/registro.html',
-                                   insumos=Insumo.query.filter_by(Estado='Activo').all(),
+                                   insumos=Insumo.query.all(),  # Obtener todos sin filtrar
                                    valores=request.form)
 
         # Verificar que el stock sea positivo
         if stock <= 0:
             flash('❌ La cantidad debe ser mayor a 0', 'danger')
             return render_template('inventario/registro.html',
-                                   insumos=Insumo.query.filter_by(Estado='Activo').all(),
+                                   insumos=Insumo.query.all(),  # Obtener todos sin filtrar
                                    valores=request.form)
 
         # Buscar si ya existe un registro para este insumo
@@ -79,7 +79,13 @@ def registrar():
         return redirect(url_for('inventario.listar'))
 
     # Mostrar formulario (GET)
-    insumos = Insumo.query.filter_by(Estado='Activo').all()
+    # Obtener todos los insumos sin filtrar por estado para evitar problemas
+    insumos = Insumo.query.all()
+
+    # Verificar si hay insumos disponibles
+    print(f"Número de insumos recuperados: {len(insumos)}")
+    for ins in insumos[:3]:  # Mostrar los primeros 3 como ejemplo
+        print(f"Insumo: ID={ins.Id}, Nombre={ins.Nombre}, Estado={ins.Estado}")
 
     # Si se proporciona un ID de insumo en la URL
     insumo_id = request.args.get('insumo')
@@ -89,7 +95,6 @@ def registrar():
             flash(f'Preparado para agregar stock de: {insumo_seleccionado.Nombre}', 'info')
 
     return render_template('inventario/registro.html', insumos=insumos)
-
 
 @inventario_bp.route('/<int:id>/ajustar', methods=['GET', 'POST'])
 def ajustar(id):

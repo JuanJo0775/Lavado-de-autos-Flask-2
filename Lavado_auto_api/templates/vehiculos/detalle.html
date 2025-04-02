@@ -37,175 +37,7 @@
                             <label class="form-label text-muted">Estado</label>
                             <div>
                                 {% if vehiculo.Estado == 'Activo' %}
-                                <span class="badge bg-success">Completado</span>
-                            {% elif servicio.Estado == 'Cancelado' %}
-                            <span class="badge bg-danger">Cancelado</span>
-                            {% else %}
-                            <span class="badge bg-secondary">{{ servicio.Estado }}</span>
-                            {% endif %}
-                        </td>
-                        <td class="text-end">
-                            <a href="{{ url_for('servicios.detalle', id=servicio.Id) }}" class="btn btn-sm btn-outline-primary">
-                                <i class="bi bi-eye"></i> Ver
-                            </a>
-                        </td>
-                    </tr>
-                    {% else %}
-                    <tr>
-                        <td colspan="7" class="text-center py-4">
-                            <div class="d-flex flex-column align-items-center">
-                                <i class="bi bi-inbox text-muted mb-3" style="font-size: 2.5rem;"></i>
-                                <h5 class="text-muted">No hay servicios registrados</h5>
-                                <p class="text-muted mb-3">Este vehículo no tiene servicios en su historial.</p>
-                                <a href="{{ url_for('servicios.registrar', placa=vehiculo.Placa) }}" class="btn btn-primary">
-                                    <i class="bi bi-plus-lg"></i> Registrar Nuevo Servicio
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
-    {% if servicios|length > 5 %}
-    <div class="card-footer text-center">
-        <a href="{{ url_for('servicios.historial_vehiculo', placa=vehiculo.Placa) }}" class="btn btn-link">
-            Ver todos los servicios ({{ servicios|length }} en total)
-        </a>
-    </div>
-    {% endif %}
-</div>
-
-<!-- Gráficos Estadísticos -->
-{% if servicios|length > 0 %}
-<div class="row mt-4">
-    <div class="col-md-6 mb-4">
-        <div class="card h-100">
-            <div class="card-header">
-                <h5 class="mb-0">Servicios por Mes</h5>
-            </div>
-            <div class="card-body">
-                <div style="height: 250px; position: relative;">
-                    <canvas id="serviciosPorMesChart"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-6 mb-4">
-        <div class="card h-100">
-            <div class="card-header">
-                <h5 class="mb-0">Tipos de Lavado</h5>
-            </div>
-            <div class="card-body">
-                <div style="height: 250px; position: relative;">
-                    <canvas id="tiposLavadoChart"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-{% endif %}
-{% endblock %}
-
-{% block extra_js %}
-{% if servicios|length > 0 %}
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Gráfico de servicios por mes
-        const ctxMes = document.getElementById('serviciosPorMesChart').getContext('2d');
-
-        // Preparar datos por mes
-        const meses = {};
-        {% for servicio in servicios %}
-        const fecha = '{{ servicio.Fecha.strftime("%Y-%m") }}';
-        if (!meses[fecha]) meses[fecha] = 0;
-        meses[fecha]++;
-        {% endfor %}
-
-        // Ordenar por fecha
-        const labels = Object.keys(meses).sort();
-        const data = labels.map(l => meses[l]);
-
-        // Formatear etiquetas para mostrar
-        const etiquetas = labels.map(l => {
-            const [year, month] = l.split('-');
-            return `${month}/${year}`;
-        });
-
-        new Chart(ctxMes, {
-            type: 'bar',
-            data: {
-                labels: etiquetas,
-                datasets: [{
-                    label: 'Servicios',
-                    data: data,
-                    backgroundColor: 'rgba(78, 115, 223, 0.8)',
-                    borderWidth: 0
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            precision: 0
-                        }
-                    }
-                }
-            }
-        });
-
-        // Gráfico de tipos de lavado
-        const ctxTipos = document.getElementById('tiposLavadoChart').getContext('2d');
-
-        // Preparar datos por tipo de lavado
-        const tiposLavado = {};
-        {% for servicio in servicios %}
-        {% if servicio.tipo_lavado %}
-        const tipo = '{{ servicio.tipo_lavado.Nombre }}';
-        if (!tiposLavado[tipo]) tiposLavado[tipo] = 0;
-        tiposLavado[tipo]++;
-        {% endif %}
-        {% endfor %}
-
-        // Colores para el gráfico
-        const backgroundColors = [
-            'rgba(78, 115, 223, 0.8)',
-            'rgba(54, 185, 204, 0.8)',
-            'rgba(246, 194, 62, 0.8)',
-            'rgba(231, 74, 59, 0.8)',
-            'rgba(28, 200, 138, 0.8)',
-            'rgba(90, 92, 105, 0.8)'
-        ];
-
-        new Chart(ctxTipos, {
-            type: 'doughnut',
-            data: {
-                labels: Object.keys(tiposLavado),
-                datasets: [{
-                    data: Object.values(tiposLavado),
-                    backgroundColor: backgroundColors,
-                    hoverOffset: 4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom'
-                    }
-                }
-            }
-        });
-    });
-</script>
-{% endif %}
-{% endblock %}Activo</span>
+                                <span class="badge bg-success">Activo</span>
                                 {% else %}
                                 <span class="badge bg-secondary">Inactivo</span>
                                 {% endif %}
@@ -413,4 +245,172 @@
                             {% if servicio.Estado == 'En proceso' %}
                             <span class="badge bg-warning text-dark">En proceso</span>
                             {% elif servicio.Estado == 'Completado' %}
-                            <span class="badge bg-success">
+                            <span class="badge bg-success">Completado</span>
+                            {% elif servicio.Estado == 'Cancelado' %}
+                            <span class="badge bg-danger">Cancelado</span>
+                            {% else %}
+                            <span class="badge bg-secondary">{{ servicio.Estado }}</span>
+                            {% endif %}
+                        </td>
+                        <td class="text-end">
+                            <a href="{{ url_for('servicios.detalle', id=servicio.Id) }}" class="btn btn-sm btn-outline-primary">
+                                <i class="bi bi-eye"></i> Ver
+                            </a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center py-4">
+                            <div class="d-flex flex-column align-items-center">
+                                <i class="bi bi-inbox text-muted mb-3" style="font-size: 2.5rem;"></i>
+                                <h5 class="text-muted">No hay servicios registrados</h5>
+                                <p class="text-muted mb-3">Este vehículo no tiene servicios en su historial.</p>
+                                <a href="{{ url_for('servicios.registrar', placa=vehiculo.Placa) }}" class="btn btn-primary">
+                                    <i class="bi bi-plus-lg"></i> Registrar Nuevo Servicio
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% if servicios|length > 5 %}
+    <div class="card-footer text-center">
+        <a href="{{ url_for('servicios.historial_vehiculo', placa=vehiculo.Placa) }}" class="btn btn-link">
+            Ver todos los servicios ({{ servicios|length }} en total)
+        </a>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Gráficos Estadísticos -->
+{% if servicios|length > 0 %}
+<div class="row mt-4">
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0">Servicios por Mes</h5>
+            </div>
+            <div class="card-body">
+                <div style="height: 250px; position: relative;">
+                    <canvas id="serviciosPorMesChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0">Tipos de Lavado</h5>
+            </div>
+            <div class="card-body">
+                <div style="height: 250px; position: relative;">
+                    <canvas id="tiposLavadoChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+{% if servicios|length > 0 %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Gráfico de servicios por mes
+        const ctxMes = document.getElementById('serviciosPorMesChart').getContext('2d');
+
+        // Preparar datos por mes
+        const meses = {};
+        {% for servicio in servicios %}
+        const fecha = '{{ servicio.Fecha.strftime("%Y-%m") }}';
+        if (!meses[fecha]) meses[fecha] = 0;
+        meses[fecha]++;
+        {% endfor %}
+
+        // Ordenar por fecha
+        const labels = Object.keys(meses).sort();
+        const data = labels.map(l => meses[l]);
+
+        // Formatear etiquetas para mostrar
+        const etiquetas = labels.map(l => {
+            const [year, month] = l.split('-');
+            return `${month}/${year}`;
+        });
+
+        new Chart(ctxMes, {
+            type: 'bar',
+            data: {
+                labels: etiquetas,
+                datasets: [{
+                    label: 'Servicios',
+                    data: data,
+                    backgroundColor: 'rgba(78, 115, 223, 0.8)',
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0
+                        }
+                    }
+                }
+            }
+        });
+
+        // Gráfico de tipos de lavado
+        const ctxTipos = document.getElementById('tiposLavadoChart').getContext('2d');
+
+        // Preparar datos por tipo de lavado
+        const tiposLavado = {};
+        {% for servicio in servicios %}
+        {% if servicio.tipo_lavado %}
+        const tipo = '{{ servicio.tipo_lavado.Nombre }}';
+        if (!tiposLavado[tipo]) tiposLavado[tipo] = 0;
+        tiposLavado[tipo]++;
+        {% endif %}
+        {% endfor %}
+
+        // Colores para el gráfico
+        const backgroundColors = [
+            'rgba(78, 115, 223, 0.8)',
+            'rgba(54, 185, 204, 0.8)',
+            'rgba(246, 194, 62, 0.8)',
+            'rgba(231, 74, 59, 0.8)',
+            'rgba(28, 200, 138, 0.8)',
+            'rgba(90, 92, 105, 0.8)'
+        ];
+
+        new Chart(ctxTipos, {
+            type: 'doughnut',
+            data: {
+                labels: Object.keys(tiposLavado),
+                datasets: [{
+                    data: Object.values(tiposLavado),
+                    backgroundColor: backgroundColors,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    });
+</script>
+{% endif %}
+{% endblock %}
