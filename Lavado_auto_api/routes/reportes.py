@@ -89,7 +89,8 @@ def diario():
                            stats=stats,
                            tipos_lavado=tipos_lavado,
                            tipos_vehiculo=tipos_vehiculo,
-                           empleados=empleados)
+                           empleados=empleados,
+                           timedelta=timedelta)  # Pasar timedelta para usar en la plantilla
 
 
 @reporte_bp.route('/mensual')
@@ -401,7 +402,7 @@ def vehiculos():
                 'color': vehiculo.Color
             })
 
-    return render_template('reportes/index.html',
+    return render_template('reportes/vehiculos.html',
                            fecha_inicio=fecha_inicio,
                            fecha_fin=fecha_fin,
                            periodo=periodo,

@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from models import db, Inventario, Insumo
 from sqlalchemy import desc
+from datetime import datetime
 
 inventario_bp = Blueprint('inventario', __name__, url_prefix='/inventario')
 
@@ -37,25 +38,27 @@ def registrar():
         insumo_id = request.form['insumo']
         stock = int(request.form['stock'])
         estado = int(request.form['estado'])
+        # Campos adicionales que podrían ser útiles (opcional)
+        proveedor = request.form.get('proveedor', '')
+        factura = request.form.get('factura', '')
+        observaciones = request.form.get('observaciones', '')
 
         # Verificar que el insumo exista
         insumo = Insumo.query.get(insumo_id)
         if not insumo:
             flash('❌ El insumo seleccionado no existe', 'danger')
             return render_template('inventario/registro.html',
-                                   insumos=Insumo.query.all(),
+                                   insumos=Insumo.query.filter_by(Estado='Activo').all(),
                                    valores=request.form)
 
         # Verificar que el stock sea positivo
         if stock <= 0:
             flash('❌ La cantidad debe ser mayor a 0', 'danger')
             return render_template('inventario/registro.html',
-                                   insumos=Insumo.query.all(),
+                                   insumos=Insumo.query.filter_by(Estado='Activo').all(),
                                    valores=request.form)
 
         # Buscar si ya existe un registro para este insumo
-        # Nota: En una implementación real, probablemente querrías un control
-        # de lotes de inventario en lugar de sumar al existente
         item_existente = Inventario.query.filter_by(Id_insumo=insumo_id).first()
 
         if item_existente:
@@ -77,6 +80,14 @@ def registrar():
 
     # Mostrar formulario (GET)
     insumos = Insumo.query.filter_by(Estado='Activo').all()
+
+    # Si se proporciona un ID de insumo en la URL
+    insumo_id = request.args.get('insumo')
+    if insumo_id:
+        insumo_seleccionado = Insumo.query.get(insumo_id)
+        if insumo_seleccionado:
+            flash(f'Preparado para agregar stock de: {insumo_seleccionado.Nombre}', 'info')
+
     return render_template('inventario/registro.html', insumos=insumos)
 
 
@@ -88,6 +99,13 @@ def ajustar(id):
     if request.method == 'POST':
         nuevo_stock = int(request.form['stock'])
         motivo = request.form['motivo']
+        observaciones = request.form.get('observaciones', '')
+
+        # Para motivos personalizados
+        if motivo == 'otro':
+            motivo_detalle = request.form.get('motivoOtro', '')
+            if motivo_detalle:
+                motivo = f"Otro: {motivo_detalle}"
 
         # Registrar el ajuste (en un sistema real se guardaría un registro de este ajuste)
         stock_anterior = item.Stock
@@ -131,10 +149,14 @@ def reporte():
     # Ordenar los tipos por valor
     valor_por_tipo = dict(sorted(valor_por_tipo.items(), key=lambda x: x[1], reverse=True))
 
+    # Fecha y hora actual para el reporte
+    now = datetime.now()
+
     return render_template('inventario/reporte.html',
                            inventario=inventario,
                            total_items=total_items,
                            valor_total=valor_total,
                            items_agotados=items_agotados,
                            items_criticos=items_criticos,
-                           valor_por_tipo=valor_por_tipo)
+                           valor_por_tipo=valor_por_tipo,
+                           now=now)

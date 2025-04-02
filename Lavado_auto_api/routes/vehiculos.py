@@ -38,6 +38,8 @@ def listar():
 def detalle(id):
     """Muestra detalles de un vehículo específico"""
     vehiculo = Vehiculo.query.get_or_404(id)
+
+    # Obtener todos los servicios de este vehículo
     servicios = Servicio.query.filter_by(Id_Tipovehículo=id).order_by(Servicio.Fecha.desc(),
                                                                       Servicio.Hora_Recibe.desc()).all()
 

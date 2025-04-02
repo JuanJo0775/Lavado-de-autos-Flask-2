@@ -28,6 +28,48 @@
                 <div class="row mb-4">
                     <div class="col-md-6">
                         <div class="mb-3">
+                            <label class="form-label text-muted">Nombre</label>
+                            <div class="fs-5 fw-bold">{{ insumo.Nombre }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Categoría</label>
+                            <div class="fs-5">{{ insumo.tipo_insumo.Nombre }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Precio Unitario</label>
+                            <div class="fs-5 text-primary">${{ insumo.Precio_Unitario }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Estado</label>
+                            <div>
+                                {% if insumo.Estado == 'Activo' %}
+                                <span class="badge bg-success fs-6">Activo</span>
+                                {% else %}
+                                <span class="badge bg-secondary fs-6">Inactivo</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label text-muted">ID</label>
+                            <div>{{ insumo.Id }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
                             <label class="form-label text-muted">Valor del Inventario</label>
                             <div class="text-success">${{ insumo.valor_inventario|round(2) }}</div>
                         </div>
@@ -224,46 +266,4 @@
         });
     });
 </script>
-{% endblock %}Nombre</label>
-                            <div class="fs-5 fw-bold">{{ insumo.Nombre }}</div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <label class="form-label text-muted">Categoría</label>
-                            <div class="fs-5">{{ insumo.tipo_insumo.Nombre }}</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <label class="form-label text-muted">Precio Unitario</label>
-                            <div class="fs-5 text-primary">${{ insumo.Precio_Unitario }}</div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <label class="form-label text-muted">Estado</label>
-                            <div>
-                                {% if insumo.Estado == 'Activo' %}
-                                <span class="badge bg-success fs-6">Activo</span>
-                                {% else %}
-                                <span class="badge bg-secondary fs-6">Inactivo</span>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <label class="form-label text-muted">ID</label>
-                            <div>{{ insumo.Id }}</div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <label class="form-label text-muted">
+{% endblock %}

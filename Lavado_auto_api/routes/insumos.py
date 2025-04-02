@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
-from models import db, Insumo, TipoInsumo
+from models import db, Insumo, TipoInsumo, InsumoPorServicio
 from sqlalchemy import desc
 
 insumo_bp = Blueprint('insumos', __name__, url_prefix='/insumos')
@@ -39,7 +39,11 @@ def listar():
 def detalle(id):
     """Ver detalles de un insumo específico"""
     insumo = Insumo.query.get_or_404(id)
-    return render_template('insumos/detalle.html', insumo=insumo)
+
+    # Obtener usos del insumo
+    insumo_usos = InsumoPorServicio.query.filter_by(Id_Insumo=id).all()
+
+    return render_template('insumos/detalle.html', insumo=insumo, insumo_usos=insumo_usos)
 
 
 @insumo_bp.route('/registrar', methods=['GET', 'POST'])
@@ -158,7 +162,7 @@ def crear_tipo():
         # Crear nuevo tipo de insumo
         tipo = TipoInsumo(
             Nombre=nombre,
-            Descripcion=descripcion,
+            Descripción=descripcion,
             Estado=1  # Activo
         )
 
@@ -169,6 +173,20 @@ def crear_tipo():
         return redirect(url_for('insumos.listar_tipos'))
 
     return render_template('insumos/crear_tipo.html')
+
+
+@insumo_bp.route('/tipos/<int:id>/editar', methods=['POST'])
+def editar_tipo(id):
+    """Editar un tipo de insumo existente"""
+    tipo = TipoInsumo.query.get_or_404(id)
+
+    tipo.Nombre = request.form['nombre']
+    tipo.Descripción = request.form['descripcion']
+    tipo.Estado = int(request.form['estado'])
+
+    db.session.commit()
+    flash('✅ Tipo de insumo actualizado correctamente', 'success')
+    return redirect(url_for('insumos.listar_tipos'))
 
 
 @insumo_bp.route('/stock_bajo')

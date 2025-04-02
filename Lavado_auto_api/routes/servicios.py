@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
-from models import db, Servicio, ChecklistIngreso, Empleado, Vehiculo, TipoLavado, InsumoPorServicio, Insumo
+from models import db, Servicio, ChecklistIngreso, Empleado, Vehiculo, TipoLavado, InsumoPorServicio, Insumo, Inventario
 from datetime import datetime, date
 from sqlalchemy import desc
 
@@ -33,7 +33,7 @@ def listar():
     servicios = query.order_by(desc(Servicio.Fecha), desc(Servicio.Hora_Recibe)).all()
 
     # Obtener estados únicos para el filtro
-    estados_servicio = {s.Estado for s in Servicio.query.all()}
+    estados_servicio = {s.Estado for s in Servicio.query.all() if s.Estado}
 
     return render_template('servicios/listado.html',
                            servicios=servicios,
@@ -50,10 +50,14 @@ def detalle(id):
     checklist = ChecklistIngreso.query.filter_by(Id_Servicio=id).first()
     insumos_usados = InsumoPorServicio.query.filter_by(Id_Servicio=id).all()
 
+    # Obtener insumos disponibles para mostrar en el modal de agregar insumo
+    insumos = Insumo.query.filter_by(Estado='Activo').all()
+
     return render_template('servicios/detalle.html',
                            servicio=servicio,
                            checklist=checklist,
-                           insumos_usados=insumos_usados)
+                           insumos_usados=insumos_usados,
+                           insumos=insumos)
 
 
 @servicio_bp.route('/registrar', methods=['GET', 'POST'])
@@ -190,8 +194,15 @@ def agregar_insumo(id):
     db.session.add(insumo_servicio)
 
     # Actualizar inventario (restar cantidad utilizada)
-    # Nota: En un sistema real, se debería implementar una lógica FIFO o LIFO
-    # para determinar qué ítems de inventario actualizar
+    # Buscar el ítem de inventario para este insumo
+    inventario_item = Inventario.query.filter_by(Id_insumo=insumo_id).first()
+    if inventario_item:
+        # Restar la cantidad usada
+        inventario_item.Stock -= cantidad
+        # Si el stock llega a cero, actualizar el estado
+        if inventario_item.Stock <= 0:
+            inventario_item.Stock = 0
+            inventario_item.Estado = 0  # 0 = Agotado
 
     db.session.commit()
 
@@ -203,7 +214,19 @@ def agregar_insumo(id):
 def en_proceso():
     """Muestra los servicios que están actualmente en proceso"""
     servicios = Servicio.query.filter_by(Estado='En proceso').order_by(Servicio.Fecha, Servicio.Hora_Recibe).all()
-    return render_template('servicios/en_proceso.html', servicios=servicios)
+
+    # Estadísticas adicionales para la plantilla
+    servicios_completados = Servicio.query.filter_by(Estado='Completado', Fecha=date.today()).count()
+    ingresos_hoy = sum(float(s.Precio) for s in Servicio.query.filter_by(Fecha=date.today(), Estado='Completado').all())
+
+    # Tiempo actual para calcular duración
+    now = datetime.now().time()
+
+    return render_template('servicios/en_proceso.html',
+                           servicios=servicios,
+                           servicios_completados=servicios_completados,
+                           ingresos_hoy=ingresos_hoy,
+                           now=now)
 
 
 @servicio_bp.route('/historial_vehiculo/<placa>')
